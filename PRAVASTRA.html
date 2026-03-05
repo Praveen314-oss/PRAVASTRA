@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PravAstra — by Praveen Rathod</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;400;600&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<!-- DARK INTRO -->
+<div id="dark-intro"></div>
+
+<!-- CENTER MOTIVATIONAL OVERLAY -->
+<div id="motiv-center" style="display:none;">
+  <div id="motiv-center-inner">
+    <canvas id="flame-canvas"></canvas>
+    <span id="motiv-center-icon">⚡</span>
+    <div id="motiv-center-text">KEEP CODING. KEEP WINNING.</div>
+    <div id="motiv-center-sub">// PravAstra — by Praveen Rathod</div>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- MATRIX BACKGROUND -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- PARTICLES LAYER -->
+<div id="particles"></div>
+
+<!-- answer-canvas and cloud-overlay are now inside sec-Games section -->
+<div id="motiv-line" style="display:none!important;"><div class="motiv-inner"><span class="motiv-icon" id="motiv-icon">⚡</span><span id="motiv-text"></span></div></div>
+
+<!-- ⚡ LIGHTNING LOADER -->
+<div id="lightning-loader">
+  <canvas id="lightning-canvas"></canvas>
+  <div class="loader-content">
+    <span class="loader-bolt">⚡</span>
+    <div class="loader-title">PravAstra</div>
+    <div class="loader-sub">by Praveen Rathod · You’re not late. You’re right on time....</div>
+    <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+    <div id="loader-pct">0%</div>
+    <button class="loader-enter-btn" id="loader-enter-btn" onclick="enterApp()">⚡ ENTER PravAstra ⚡</button>
+  </div>
+</div>
+
+<!-- 🏆 BADGE MILESTONE MODAL -->
+<!-- badge removed -->
+
+<!-- HEADER -->
+<div id="header">
+  <div>
+    <div class="logo">PravAstra<span>by Praveen Rathod</span></div>
+  </div>
+  <div id="nav-scroll-wrap"><div id="nav"></div></div>
+</div>
+
+<!-- FLOATING PRAVEEN AVATAR -->
+<div id="praveen-float" onclick="navTo('About')" title="About Praveen">
+  <img id="praveen-float-img" src="" alt="Praveen Rathod">
+</div>
+<div id="praveen-tooltip">👨‍💻 Praveen Rathod — Creator </div>
+
+<!-- CONTENT -->
+<div id="content">
+
+<!-- ══ HOME ══ -->
+<div class="section active" id="sec-Home">
+  <div class="hero">
+    <span class="hero-badge">⚡ LEVEL UP YOUR CAREER ⚡</span>
+    <h1 class="hero-title">
+      <span class="line1">MASTER THE CODE</span>
+      <span class="line2">CONQUER THE INTERVIEW</span>
+      <span class="line3">BUILD THE FUTURE</span>
+    </h1>
+    <p class="hero-sub"><span id="typed-text"></span><span class="typed"></span></p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num" data-target="150">0</div><div class="stat-lbl">DSA Questions</div></div>
+    <div class="stat-box"><div class="stat-num" data-target="45">0</div><div class="stat-lbl">Days Daily Challenges</div></div>
+    <div class="stat-box"><div class="stat-num" data-target="30">0</div><div class="stat-lbl">Interview Q&As</div></div>
+    <div class="stat-box"><div class="stat-num" data-target="50">0</div><div class="stat-lbl">Quiz Levels(EACH DOMAIN)</div></div>
+    <div class="stat-box"><div class="stat-num" data-target="3">0</div><div class="stat-lbl">Domains</div></div>
+    <div class="stat-box"><div class="stat-num" data-target="200">0</div><div class="stat-lbl">Tips & Shortcuts</div></div>
+  </div>
+
+  <!-- ALL SECTIONS GRID -->
+  <div style="margin:32px 0 8px;">
+    <div style="font-family:'Orbitron',monospace;font-size:.75rem;color:var(--neon2);letter-spacing:.25em;margin-bottom:20px;text-align:center;">// EXPLORE ALL SECTIONS</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;">
+
+      <div class="home-sec-card" onclick="navTo('Learn')" style="--card-color:#7b2fff">
+        <span class="home-sec-icon">📚</span>
+        <div class="home-sec-title">Learn</div>
+        <div class="home-sec-desc">Cybersecurity, Full Stack & AI/ML theory, cheatsheets & code references</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Games')" style="--card-color:#00ffcc">
+        <span class="home-sec-icon">🎮</span>
+        <div class="home-sec-title">Quiz Arena</div>
+        <div class="home-sec-desc">50-level quiz engine with timed questions across 3 domains</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('DSA Arena')" style="--card-color:#ffd700;background:linear-gradient(135deg,rgba(13,0,37,.95),rgba(40,20,0,.6));">
+        <span class="home-sec-icon">⚔️</span>
+        <div class="home-sec-title" style="color:#ffd700;">DSA Arena</div>
+        <div class="home-sec-desc">All Top Common MNC's questions — Easy + Medium + Hard in one battle arena</div>
+        <div class="home-sec-arrow" style="color:#ffd700;">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('DSA')" style="--card-color:#ffcc00">
+        <span class="home-sec-icon">📊</span>
+        <div class="home-sec-title">DSA MARATHON</div>
+        <div class="home-sec-desc">MNC-level DSA questions — 20 topics, Easy / Medium / Hard</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Challenges')" style="--card-color:#ff2d78">
+        <span class="home-sec-icon">🔥</span>
+        <div class="home-sec-title">45-Days Grind</div>
+        <div class="home-sec-desc">Daily challenges: DSA + Full Stack + Cybersecurity + AI. All 45 days unlocked</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Interview')" style="--card-color:#00ccff">
+        <span class="home-sec-icon">🎯</span>
+        <div class="home-sec-title">Interview Prep</div>
+        <div class="home-sec-desc">30 curated HR + Technical interview Q&As with expert answers</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Aptitude')" style="--card-color:#ffcc00">
+        <span class="home-sec-icon">🧮</span>
+        <div class="home-sec-title">Aptitude</div>
+        <div class="home-sec-desc">30+ shortcuts per topic for placement exams — Number System to Reasoning</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('GATE')" style="--card-color:#00ffcc">
+        <span class="home-sec-icon">🎓</span>
+        <div class="home-sec-title">GATE Prep</div>
+        <div class="home-sec-desc">CS/IT subject-wise notes, PYQs strategy, weightage analysis & free resources</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('UPSC')" style="--card-color:#7b2fff">
+        <span class="home-sec-icon">🏛️</span>
+        <div class="home-sec-title">UPSC Prep</div>
+        <div class="home-sec-desc">Prelims + Mains strategy, GS notes, current affairs approach & optional subjects</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Certificates')" style="--card-color:#ff2d78">
+        <span class="home-sec-icon">🏅</span>
+        <div class="home-sec-title">Certificates</div>
+        <div class="home-sec-desc">Career certification roadmap for Cybersecurity, Full Stack and AI</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Hackathon')" style="--card-color:#ffcc00">
+        <span class="home-sec-icon">⚡</span>
+        <div class="home-sec-title">Hackathon</div>
+        <div class="home-sec-desc">Winning strategies, project ideas, tech stacks and competition platforms</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Resources')" style="--card-color:#00ccff">
+        <span class="home-sec-icon">🎬</span>
+        <div class="home-sec-title">free Resources</div>
+        <div class="home-sec-desc">Free YouTube channels, free certificates & free courses by level</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('DSA Easy')" style="--card-color:#00ffcc">
+        <span class="home-sec-icon">🟢</span>
+        <div class="home-sec-title">DSA Easy</div>
+        <div class="home-sec-desc">Easy · Medium · Hard question banks — 3 per topic per difficulty level</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Job Roadmap')" style="--card-color:#ff2d78">
+        <span class="home-sec-icon">🚀</span>
+        <div class="home-sec-title">Job Roadmap</div>
+        <div class="home-sec-desc">14-Month job-ready roadmap for Cybersecurity (Red+Blue), Full Stack & AI — from basics to hired</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('About')" style="--card-color:#00ffcc">
+        <span class="home-sec-icon">👨‍💻</span>
+        <div class="home-sec-title">About</div>
+        <div class="home-sec-desc">About PravAstra, the creator Praveen Rathod & platform mission</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+      <div class="home-sec-card" onclick="navTo('Support')" style="--card-color:#ff2d78">
+        <span class="home-sec-icon">💬</span>
+        <div class="home-sec-title">Contact</div>
+        <div class="home-sec-desc">Reach Praveen on GitHub, Telegram, TryHackMe or via email</div>
+        <div class="home-sec-arrow">→</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ LEARN ══ -->
+<div class="section" id="sec-Learn">
+  <div class="sec-header">
+    <span class="sec-tag">// KNOWLEDGE_BASE</span>
+    <h2 class="sec-title">Learn <span>Everything</span></h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="tabs" id="learn-tabs"></div>
+  <div id="learn-content"></div>
+</div>
+
+<!-- ══ GAMES ══ -->
+<div class="section" id="sec-Games" style="position:relative;overflow:hidden;">
+  <!-- Animation canvas scoped to this section only -->
+  <canvas id="answer-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:50;opacity:0;border-radius:16px;"></canvas>
+  <div id="cloud-overlay" style="position:absolute;inset:0;z-index:49;pointer-events:none;display:flex;align-items:center;justify-content:center;opacity:0;border-radius:16px;">
+    <svg class="cloud-svg" width="300" height="200" viewBox="0 0 300 200">
+      <defs><radialGradient id="cg"><stop offset="0%" stop-color="#7b2fff"/><stop offset="100%" stop-color="#00ffcc"/></radialGradient></defs>
+      <ellipse cx="150" cy="100" rx="130" ry="75" fill="url(#cg)" opacity=".9"/>
+      <ellipse cx="80" cy="90" rx="80" ry="55" fill="url(#cg)" opacity=".8"/>
+      <ellipse cx="220" cy="85" rx="90" ry="60" fill="url(#cg)" opacity=".8"/>
+    </svg>
+  </div>
+  <div class="sec-header">
+    <span class="sec-tag">// QUIZ_ENGINE</span>
+    <h2 class="sec-title">Quiz <span>Arena</span></h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="tabs" id="game-tabs"></div>
+  <div class="quiz-container" id="quiz-area"></div>
+</div>
+
+<!-- ══ DSA ══ -->
+<div class="section" id="sec-DSA">
+  <div class="sec-header">
+    <span class="sec-tag">// DSA_VAULT</span>
+    <h2 class="sec-title">DSA <span>TOPIC-WISE Questions, TIP:(Don't go for solution, go for logic)</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">20 topics · 2 Easy + 2 Medium + 2 Hard per topic · Top MNC interview questions · Click topic → filter by difficulty</p>
+  </div>
+  <div class="dsa-topic-grid" id="dsa-topics"></div>
+  <div id="dsa-panel-wrap"></div>
+</div>
+
+<!-- ══ DSA EASY ══ -->
+<div class="section" id="sec-DSA Easy">
+  <div class="sec-header">
+    <span class="sec-tag">// DSA_EASY</span>
+    <h2 class="sec-title">DSA <span style="color:var(--neon1);">Easy</span> Arena, TIP: (Don't go for solution, go for logic)</h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">3 Easy questions per topic · Build your foundations · All 20 topics</p>
+  </div>
+  <div id="dsa-easy-content"></div>
+</div>
+
+<!-- ══ DSA MEDIUM ══ -->
+<div class="section" id="sec-DSA Medium">
+  <div class="sec-header">
+    <span class="sec-tag">// DSA_MEDIUM</span>
+    <h2 class="sec-title">DSA <span style="color:var(--neon4);">Medium</span> Arena, TIP: (Don't go for solution, go for logic)</h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">3 Medium questions per topic · Build interview confidence · All 20 topics</p>
+  </div>
+  <div id="dsa-medium-content"></div>
+</div>
+
+<!-- ══ DSA HARD ══ -->
+<div class="section" id="sec-DSA Hard">
+  <div class="sec-header">
+    <span class="sec-tag">// DSA_HARD</span>
+    <h2 class="sec-title">DSA <span style="color:var(--neon3);">Hard</span> Arena, TIP: (Don't go for solution, go for logic)</h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">3 Hard questions per topic · FAANG-level challenges · All 20 topics</p>
+  </div>
+  <div id="dsa-hard-content"></div>
+</div>
+
+<!-- ══ DSA ARENA (ALL) ══ -->
+<div class="section" id="sec-DSA Arena">
+  <div class="sec-header" style="background:linear-gradient(135deg,rgba(255,204,0,.1),rgba(255,45,120,.08));border-color:rgba(255,204,0,.3);">
+    <span class="sec-tag" style="color:var(--neon4);">// DSA_ARENA — ALL DIFFICULTIES</span>
+    <h2 class="sec-title">⚔️ DSA <span style="background:linear-gradient(135deg,#ffd700,#ff2d78);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">Arena, TIP: (Don't for solution, go for logic)</span></h2>
+    <div class="sec-line" style="background:linear-gradient(135deg,#ffd700,#ff2d78);"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Most Asked Coding Questions by Top CompaniesMost Asked Coding Questions by Top Companies · Easy + Medium + Hard · All 20 topics · MNC-level interview prep</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px;">
+      <span style="padding:5px 16px;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:.65rem;background:rgba(0,255,204,.15);border:1px solid rgba(0,255,204,.35);color:var(--neon1);">🟢 EASY</span>
+      <span style="padding:5px 16px;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:.65rem;background:rgba(255,204,0,.15);border:1px solid rgba(255,204,0,.35);color:var(--neon4);">🟡 MEDIUM</span>
+      <span style="padding:5px 16px;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:.65rem;background:rgba(255,45,120,.15);border:1px solid rgba(255,45,120,.35);color:var(--neon3);">🔴 HARD</span>
+    </div>
+  </div>
+  <div id="dsa-arena-content"></div>
+</div>
+
+<!-- ══ CHALLENGES ══ -->
+<div class="section" id="sec-Challenges">
+  <div class="sec-header">
+    <span class="sec-tag">// 45_DAY_CHALLENGE</span>
+    <h2 class="sec-title">🔥 45-Day <span>Grind</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">All 45 days unlocked · DSA + Full Stack + Cybersecurity + AI/ML · Beginner → Expert · Jump to any day!</p>
+  </div>
+  <div id="challenge-content"></div>
+</div>
+
+<!-- ══ INTERVIEW ══ -->
+<div class="section" id="sec-Interview">
+  <div class="sec-header">
+    <span class="sec-tag">// INTERVIEW_PREP</span>
+    <h2 class="sec-title">30 Interview <span>Questions</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.8rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">HR + Technical | How to answer like a pro</p>
+  </div>
+  <div class="tabs" id="iq-tabs" style="margin-bottom:24px;"></div>
+  <div id="iq-list"></div>
+</div>
+
+<!-- ══ APTITUDE ══ -->
+<div class="section" id="sec-Aptitude">
+  <div class="sec-header">
+    <span class="sec-tag">// MATH_SHORTCUTS</span>
+    <h2 class="sec-title">Aptitude <span>Shortcuts</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.8rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">30+ shortcuts per topic | Placement-exam ready</p>
+  </div>
+  <div class="tabs" id="apt-tabs"></div>
+  <div class="apt-grid" id="apt-content"></div>
+</div>
+
+<!-- ══ CERTIFICATES ══ -->
+<div class="section" id="sec-Certificates">
+  <div class="sec-header">
+    <span class="sec-tag">// CERT_ROADMAP</span>
+    <h2 class="sec-title">Career <span>Certificates</span></h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="tabs" id="cert-tabs"></div>
+  
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;padding:10px 16px;background:rgba(0,0,0,.3);border-radius:10px;border:1px solid rgba(255,255,255,.06);">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,.35);margin-right:4px;align-self:center;">DOMAIN:</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(255,50,80,.18);border:1px solid rgba(255,50,80,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#ff6680;">🔒 Cybersecurity</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(0,153,255,.18);border:1px solid rgba(0,153,255,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#4dbeff;">⚡ Full Stack</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(0,230,118,.18);border:1px solid rgba(0,230,118,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#00e676;">🤖 AI / ML</span>
+</div>
+  <div class="grid-2" id="cert-content"></div>
+</div>
+
+<!-- ══ HACKATHON ══ -->
+<div class="section" id="sec-Hackathon">
+  <div class="sec-header">
+    <span class="sec-tag">// HACK_PLAYBOOK</span>
+    <h2 class="sec-title">Hackathon <span>Playbook</span></h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="tabs" id="hack-tabs"></div>
+  
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;padding:10px 16px;background:rgba(0,0,0,.3);border-radius:10px;border:1px solid rgba(255,255,255,.06);">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,.35);margin-right:4px;align-self:center;">DOMAIN:</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(255,50,80,.18);border:1px solid rgba(255,50,80,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#ff6680;">🔒 Cybersecurity</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(0,153,255,.18);border:1px solid rgba(0,153,255,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#4dbeff;">⚡ Full Stack</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(0,230,118,.18);border:1px solid rgba(0,230,118,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#00e676;">🤖 AI / ML</span>
+</div>
+  <div id="hack-content"></div>
+</div>
+
+<!-- ══ RESOURCES ══ -->
+<div class="section" id="sec-Resources">
+  <div class="sec-header">
+    <span class="sec-tag">//Free RESOURCES</span>
+    <h2 class="sec-title">Top <span>Free Resources</span></h2>
+    <div class="sec-line"></div>
+  </div>
+  <!-- Main resource type tabs -->
+  <div class="tabs" id="res-type-tabs" style="margin-bottom:20px;"></div>
+
+  <!-- YouTube Channels Section -->
+  <div id="res-channels-section">
+    <div class="sec-group sg-channels">
+      <div class="sec-group-title">📺 TOP YOUTUBE CHANNELS BY DOMAIN <span style="font-size:.55rem;background:rgba(0,255,204,.15);color:#00ffcc;padding:3px 10px;border-radius:10px;border:1px solid rgba(0,255,204,.3);margin-left:auto;">Click any card to visit ↗</span></div>
+      <div class="tabs" id="res-tabs"></div>
+      <div id="res-channels" style="display:grid;gap:12px;margin-bottom:8px;"></div>
+    </div>
+  </div>
+
+  <!-- Free Certificates Section -->
+  <div id="res-certs-section" style="display:none;">
+    <div class="sec-group sg-certs">
+      <div class="sec-group-title">🎓 FREE CERTIFICATES <span style="font-size:.55rem;margin-left:8px;color:rgba(255,45,120,.7);">— Choose your level & domain</span></div>
+      <div class="tabs" id="cert-level-tabs" style="margin-bottom:16px;"></div>
+      <div class="tabs" id="cert-domain-tabs" style="margin-bottom:20px;"></div>
+      <div id="free-cert-content" style="display:grid;gap:14px;"></div>
+    </div>
+  </div>
+
+  <!-- Free Videos Section -->
+  <div id="res-videos-section" style="display:none;">
+    <div class="sec-group sg-courses">
+      <div class="sec-group-title">🎬 FREE YOUTUBE COURSES <span style="font-size:.55rem;margin-left:8px;color:rgba(255,204,0,.7);">— Choose your level & domain</span></div>
+      <div class="tabs" id="vid-level-tabs" style="margin-bottom:16px;"></div>
+      <div class="tabs" id="vid-domain-tabs" style="margin-bottom:20px;"></div>
+      <div id="free-vid-content" style="display:grid;gap:14px;"></div>
+    </div>
+  </div>
+
+  <!-- Roadmap Section -->
+  <div id="res-roadmap-section" style="display:none;">
+    <div class="sec-group sg-ai">
+      <div class="sec-group-title">🗺️ LEARNING ROADMAP <span style="font-size:.55rem;margin-left:8px;color:rgba(123,47,255,.7);">— Phase-by-phase path</span></div>
+      <div class="tabs" id="res-rm-tabs" style="margin-bottom:20px;"></div>
+      <div id="res-rm-content"></div>
+    </div>
+  </div>
+
+  <!-- Free APIs Section -->
+  <div id="res-apis-section" style="display:none;">
+    <div class="sec-group sg-apis">
+      <div class="sec-group-title">🔌 FREE APIS — BUILD REAL PROJECTS <span style="font-size:.52rem;font-family:'JetBrains Mono',monospace;color:rgba(123,47,255,.7);margin-left:8px;">No credit card · CORS-friendly</span></div>
+      <div class="tabs" id="api-category-tabs" style="margin-bottom:20px;"></div>
+      <div id="free-api-content" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRACTICAL ══ -->
+<div class="section" id="sec-Practical">
+  <div class="sec-header">
+    <span class="sec-tag">// PRACTICE_LABS</span>
+    <h2 class="sec-title">Practical <span>Platforms</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Hands-on labs from beginner to advanced — Cybersecurity · Full Stack · AI/ML</p>
+  </div>
+  <div class="tabs" id="practical-tabs"></div>
+  
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;padding:10px 16px;background:rgba(0,0,0,.3);border-radius:10px;border:1px solid rgba(255,255,255,.06);">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,.35);margin-right:4px;align-self:center;">DOMAIN:</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(255,50,80,.18);border:1px solid rgba(255,50,80,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#ff6680;">🔒 Cybersecurity</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(0,153,255,.18);border:1px solid rgba(0,153,255,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#4dbeff;">⚡ Full Stack</span>
+  <span style="display:flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;background:rgba(0,230,118,.18);border:1px solid rgba(0,230,118,.4);font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#00e676;">🤖 AI / ML</span>
+</div>
+  <div id="practical-content"></div>
+</div>
+
+<!-- ══ ROADMAP ══ -->
+<div class="section" id="sec-Roadmap">
+  <div class="sec-header">
+    <span class="sec-tag">// LEARNING_PATH</span>
+    <h2 class="sec-title">Learning <span>Roadmap</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Phase-by-phase learning path · Red Team · Blue Team · Cybersecurity · Full Stack · AI/ML</p>
+  </div>
+  <div class="tabs" id="rm-tabs"></div>
+  <div id="rm-content"></div>
+</div>
+
+<!-- ══ JOB ROADMAP ══ -->
+<div class="section" id="sec-Job Roadmap">
+  <div class="sec-header">
+    <span class="sec-tag">// JOB_READY_ROADMAP</span>
+    <h2 class="sec-title">🚀 14-Month <span>Job Ready</span> Roadmap</h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Basics → Job Ready · 14 Months · Cybersecurity (Blue + Red Team) · Full Stack · AI/ML · Month-by-month plan</p>
+  </div>
+  <div class="tabs" id="jr-domain-tabs" style="margin-bottom:20px;"></div>
+  <div id="jr-content"></div>
+</div>
+
+<!-- ══ GATE ══ -->
+<div class="section" id="sec-GATE">
+  <div class="sec-header">
+    <span class="sec-tag">// GATE_CS_IT</span>
+    <h2 class="sec-title">GATE <span>CS/IT Prep</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Subject-wise notes · PYQ strategy · Weightage analysis · Free resources</p>
+  </div>
+  <div class="tabs" id="gate-tabs"></div>
+  <div id="gate-content"></div>
+</div>
+
+<!-- ══ UPSC ══ -->
+<div class="section" id="sec-UPSC">
+  <div class="sec-header">
+    <span class="sec-tag">// UPSC_CSE</span>
+    <h2 class="sec-title">UPSC <span>CSE Prep</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Prelims · Mains · GS Notes · Optional Subjects · Strategy & Timeline</p>
+  </div>
+  <div class="tabs" id="upsc-tabs"></div>
+  <div id="upsc-content"></div>
+</div>
+
+<!-- ══ JOBS & INTERNSHIPS ══ -->
+<div class="section" id="sec-Jobs">
+  <div class="sec-header">
+    <span class="sec-tag">// CAREER_LAUNCH</span>
+    <h2 class="sec-title">Jobs & <span>Internships</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Internship portals · Remote work · Domain-specific boards · Application tips</p>
+  </div>
+  <div class="tabs" id="jobs-tabs"></div>
+  <div id="jobs-domain-tabs" style="margin-bottom:20px;"></div>
+  <div id="jobs-content"></div>
+</div>
+
+
+<!-- ══ AI TOOLS ══ -->
+<div class="section" id="sec-AI Tools">
+  <div class="sec-header">
+    <span class="sec-tag">// AI_TOOLKIT</span>
+    <h2 class="sec-title">🤖 AI <span>Tools</span> Hub</h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Curated AI tools for developers, students & creators · Free & Paid separated</p>
+  </div>
+  <div id="ai-tools-content"></div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="section" id="sec-About" style="position:relative;overflow:hidden;">
+  <div class="sec-header">
+    <span class="sec-tag">// ABOUT</span>
+    <h2 class="sec-title">About <span>PravAstra</span></h2>
+    <div class="sec-line"></div>
+  </div>
+  <!-- Fire & Spark canvas -->
+  <canvas id="about-fire-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0;transition:opacity 1s;" width="1200" height="800"></canvas>
+  <div style="position:relative;z-index:1;">
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-avatar" id="about-praveen-avatar" style="overflow:hidden;padding:0;background:var(--grad);">
+        <img id="about-praveen-img" src="" alt="Praveen Rathod" style="width:80px;height:80px;border-radius:50%;display:block;">
+      </div>
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">Praveen Rathod</div>
+      <div style="font-size:.8rem;color:var(--neon1);margin-bottom:12px;font-family:'JetBrains Mono',monospace;">Creator & Lead Developer | Praveen Rathod | Editor | Cybersecurity Enthusiast | Purpose: Building Skilled Minds for a Strong Digital Future</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.6;">Built PravAstra to democratize quality tech education. Every section is crafted with real interview and job-market insights.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-avatar">🚀</div>
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">Mission</div>
+      <div style="font-size:.8rem;color:var(--neon2);margin-bottom:12px;font-family:'JetBrains Mono',monospace;">Learn → Practice → Get Hired</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.6;">PravAstra covers DSA, system design, cybersecurity, full stack, and AI/ML — everything you need for top tech companies.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-avatar">⚡</div>
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;">Platform Stats</div>
+      <div style="font-size:.8rem;color:var(--neon4);margin-bottom:12px;font-family:'JetBrains Mono',monospace;">100% Free · Open Source Spirit</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.6;">TOP COMMON MNC COMPANYS DSA problems,  daily challenges, 30 interview Q&As, quiz engine, aptitude shortcuts, and more.</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--card);">
+    <div style="font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;">Praveen Rathod</div>
+    <div style="font-size:.8rem;color:var(--muted);font-family:'JetBrains Mono',monospace;">PravAstra is a platform dedicated to job-ready technical education.</div>
+  </div>
+  </div>
+</div>
+
+<!-- ══ SUPPORT ══ -->
+<div class="section" id="sec-Support">
+  <div class="sec-header">
+    <span class="sec-tag">// CONNECT</span>
+    <h2 class="sec-title">Connect with <span>Praveen</span></h2>
+    <div class="sec-line"></div>
+    <p style="color:var(--muted);font-size:.78rem;margin-top:8px;font-family:'JetBrains Mono',monospace;">Reach out for doubts, collaboration, feedback or just to say hi!</p>
+  </div>
+  <!-- Contact cards -->
+  <div class="contact-grid">
+    <a class="contact-card" href="https://github.com/Praveen314-oss" target="_blank" style="border-color:rgba(255,255,255,.2);" onmouseover="this.style.borderColor='#fff';this.style.boxShadow='0 0 20px rgba(255,255,255,.18)'" onmouseout="this.style.borderColor='rgba(255,255,255,.2)';this.style.boxShadow='none'">
+      <span class="cc-icon">🐙</span>
+      <div class="cc-platform">GitHub</div>
+      <div class="cc-handle">@praveen314-oss</div>
+    </a>
+    <a class="contact-card" href="https://t.me/+FL8KI9sOIQw2MTZl" target="_blank" style="border-color:rgba(0,136,204,.3);" onmouseover="this.style.borderColor='#0088cc';this.style.boxShadow='0 0 20px rgba(0,136,204,.25)'" onmouseout="this.style.borderColor='rgba(0,136,204,.3)';this.style.boxShadow='none'">
+      <span class="cc-icon">✈️</span>
+      <div class="cc-platform" style="color:#0088cc;">Telegram</div>
+      <div class="cc-handle">@skills_Bidge</div>
+    </a>
+    <a class="contact-card" href="https://tryhackme.com/p/PraveenXsnigdha" target="_blank" style="border-color:rgba(196,30,58,.3);" onmouseover="this.style.borderColor='#c41e3a';this.style.boxShadow='0 0 20px rgba(196,30,58,.25)'" onmouseout="this.style.borderColor='rgba(196,30,58,.3)';this.style.boxShadow='none'">
+      <span class="cc-icon">🎯</span>
+      <div class="cc-platform" style="color:#c41e3a;">TryHackMe</div>
+      <div class="cc-handle">@PraveenXsnigdha</div>
+    </a>
+    <a class="contact-card" href="https://medium.com/@pr9826163" target="_blank" style="border-color:rgba(196,30,58,.3);" onmouseover="this.style.borderColor='#c41e3a';this.style.boxShadow='0 0 20px rgba(196,30,58,.25)'" onmouseout="this.style.borderColor='rgba(196,30,58,.3)';this.style.boxShadow='none'">
+  <span class="cc-icon">✍️</span>
+  <div class="cc-platform" style="color:#c41e3a;">Medium</div>
+  <div class="cc-handle">@pr9826163</div>
+</a>
+    <a class="contact-card" href="https://mail.google.com/mail/?view=cm&to=karn49014@gmail.com" style="border-color:rgba(234,67,53,.3);" onmouseover="this.style.borderColor='#ea4335';this.style.boxShadow='0 0 20px rgba(234,67,53,.25)'" onmouseout="this.style.borderColor='rgba(234,67,53,.3)';this.style.boxShadow='none'">
+      <span class="cc-icon">📧</span>
+      <div class="cc-platform" style="color:#ea4335;">Gmail</div>
+      <div class="cc-handle"><span class="__cf_email__" data-cfemail="09797b687f6c6c676468676a6160383b3b3b496e64686065276a6664">[<span class="__cf_email__" data-cfemail="3d565c4f5309040d0c097d5a505c5451135e5250">[<span class="__cf_email__" data-cfemail="3b505a49550f020b0a0f7b5c565a525715585456">[email&#160;protected]</span>&#160;]</span>&#160;]</span></div>
+    </a>
+  </div>
+ 
+
+<footer>
+  © 2025 <span>Praveen Rathod</span> · PravAstra Platform · Built by <span>Praveen Rathod</span> · All Rights Reserved
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
